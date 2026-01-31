@@ -41,5 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 153051909
+    locked: 0
+  - name: MaskTile
+    uniqueID: 1459517679
+    locked: 0
+  - name: FixedLine
+    uniqueID: 2328812261
+    locked: 0
   m_RenderingLayers:
   - Default
