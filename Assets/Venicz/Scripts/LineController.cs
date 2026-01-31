@@ -33,21 +33,22 @@ public class LineController : MonoBehaviour
         //在在起始位置生成一个点，往下一个lineSlot移动，当到达位置后，在新的位置生成一个新的点，直到达到终点。
         while (currentIndex < lineSlot.Length)
         {
-            line.positionCount = currentIndex;
+            line.positionCount++;
             int pointIndex = line.positionCount - 1;
 
             Vector3 startPos = lineSlot[currentIndex-1].position;//上一点的位置
             Vector3 targetPos = lineSlot[currentIndex].position;//目标位置
 
-            line.SetPosition(pointIndex, startPos);
             float t = 0f;
-            while (t < 1f)
+            while (t <= 1f)
             {
-                t += Time.deltaTime*moveSpeed;
+                t += Time.deltaTime * moveSpeed;
                 line.SetPosition(pointIndex,Vector3.Lerp(startPos, targetPos, t));
                 //line.SetPosition(pointIndex, Vector3.SmoothDamp(startPos, targetPos,ref moveVel, 1f));
                 yield return null;
             }
+
+            line.SetPosition(pointIndex, targetPos);
 
             currentIndex++;
         }
