@@ -5,7 +5,6 @@ public class Drag: MonoBehaviour
     private bool isDaragging = false;
     private Vector3 offset;
 
-    
 
     void Update()
     {
