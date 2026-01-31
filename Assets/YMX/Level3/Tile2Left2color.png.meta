@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 02d307dd4cdf0724e94e2b5c7cdfb678
+guid: f4d2fd406ed55a440bcb2b0bb7f58eb4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7787137430137734895
-    second: Schematic diagram2_0
+      213: -332080565721766952
+    second: Tile2Left2color_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Schematic diagram2_0
+      name: Tile2Left2color_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 200
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 119fd7be3c78ee390800000000000000
-      internalID: -7787137430137734895
+      spriteID: 8d3e7532c76346bf0800000000000000
+      internalID: -332080565721766952
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Schematic diagram2_0: -7787137430137734895
+      Tile2Left2color_0: -332080565721766952
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
