@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2ac0f9ac2702947a83a323d3d5d9e7, type: 3}
   m_Name: Area1
   m_EditorClassIdentifier: 
-  AreaName: Version1
+  AreaName: 
   Levels:
   - {fileID: 11400000, guid: 7d943ce648489d649a5d2913cb7341e7, type: 2}
   - {fileID: 11400000, guid: 6b673d1210399d24bb45a4ac503f035a, type: 2}
