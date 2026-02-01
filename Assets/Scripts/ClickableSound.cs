@@ -6,9 +6,9 @@ public class ClickableSound : MonoBehaviour,
     IPointerDownHandler,
     IPointerUpHandler
 {
-    public AudioClip buttonDownClip;   // clip1
-    public AudioClip maskDownClip;     // clip2
-    public AudioClip maskUpClip;       // clip3
+    public AudioClip buttonDownClip;
+    public AudioClip maskDownClip;
+    public AudioClip maskUpClip;
 
     private Button button;
     private MaskID maskID;
@@ -19,35 +19,39 @@ public class ClickableSound : MonoBehaviour,
         maskID = GetComponent<MaskID>();
     }
 
-    // 鼠标 / 手指 按下
     public void OnPointerDown(PointerEventData eventData)
     {
-        // 先记录事件触发，便于排查 OnPointerDown 是否被调用
         Debug.Log($"[ClickableSound] OnPointerDown on '{gameObject.name}' button={(button!=null)} mask={(maskID!=null)}");
 
-        // 情况 1：这是一个 Button
-        if (button != null)
+        bool hasAudioMgr = AudioManager.Instance != null;
+        var sfx = AudioManager.Instance != null ? AudioManager.Instance.sfxSource : null;
+        Debug.Log($"[ClickableSound] AudioManager.Instance={(hasAudioMgr)} sfxSource={(sfx!=null)} buttonDownClip={(buttonDownClip!=null)} maskDownClip={(maskDownClip!=null)}");
+
+        if (button != null && buttonDownClip != null)
         {
-            if (buttonDownClip != null)
-                AudioManager.Instance?.PlaySFX(buttonDownClip);
+            if (AudioManager.Instance != null && AudioManager.Instance.sfxSource != null)
+                AudioManager.Instance.PlaySFX(buttonDownClip);
+            else
+                Debug.LogWarning("[ClickableSound] Cannot play buttonDownClip: AudioManager or sfxSource is missing.");
         }
 
-        // 情况 2：这是一个 MaskID
-        if (maskID != null)
+        if (maskID != null && maskDownClip != null)
         {
-            Debug.Log("[ClickableSound] Mask down detected");
-            if (maskDownClip != null)
-                AudioManager.Instance?.PlaySFX(maskDownClip);
+            if (AudioManager.Instance != null && AudioManager.Instance.sfxSource != null)
+                AudioManager.Instance.PlaySFX(maskDownClip);
+            else
+                Debug.LogWarning("[ClickableSound] Cannot play maskDownClip: AudioManager or sfxSource is missing.");
         }
     }
 
-    // 鼠标 / 手指 抬起
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (maskID != null)
+        if (maskID != null && maskUpClip != null)
         {
-            if (maskUpClip != null)
-                AudioManager.Instance?.PlaySFX(maskUpClip);
+            if (AudioManager.Instance != null && AudioManager.Instance.sfxSource != null)
+                AudioManager.Instance.PlaySFX(maskUpClip);
+            else
+                Debug.LogWarning("[ClickableSound] Cannot play maskUpClip: AudioManager or sfxSource is missing.");
         }
     }
 }

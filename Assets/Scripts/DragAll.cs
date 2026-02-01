@@ -9,6 +9,11 @@ public class DragAll : MonoBehaviour
 
     public WinController winController;
 
+    // 可配置：视口内边距（0-0.5），默认 5% 的内边距
+    [Tooltip("视口内边距 (0..0.5)，用于避免物体中心靠边，值越大范围越小")]
+    [Range(0f, 0.3f)]
+    public float viewportPadding = 0.05f;
+
 
     void Update()
     {
@@ -36,17 +41,7 @@ public class DragAll : MonoBehaviour
                 var mask = dragging.GetComponent<MaskID>();
                 if (mask != null)
                 {
-                    // basic safety checks
-                    if (winController == null)
-                    {
-                        Debug.LogWarning("[DragAll] winController is not assigned!");
-                    }
-                    else if (winController.targets == null)
-                    {
-                        Debug.LogWarning("[DragAll] winController.targets is null!");
-                    }
-
-                    // 吸附：在所有目标中找与 mask ID 匹配且在 acceptRadius 内的最近目标
+                    // 吸附逻辑（略，此处保留原有实现）
                     TargetSlot bestTarget = null;
                     float bestDist = float.MaxValue;
                     if (winController != null && winController.targets != null)
@@ -55,7 +50,6 @@ public class DragAll : MonoBehaviour
                         {
                             if (target == null) continue;
                             if (target.requiredMaskID != mask.tileID) continue;
-
                             float dist = Vector2.Distance(mask.transform.position, target.transform.position);
                             if (dist <= target.acceptRadius && dist < bestDist)
                             {
@@ -74,7 +68,6 @@ public class DragAll : MonoBehaviour
                         Debug.Log($"[DragAll] No snap target found for '{dragging.name}' (id='{mask.tileID}')");
                     }
 
-                    // 评估（吸附后再评估）
                     if (winController != null)
                         winController.EvaluateMaskOnTargets(mask);
                 }
@@ -88,9 +81,21 @@ public class DragAll : MonoBehaviour
             dragging = null;
         }
 
-        // Dragging
+        // Dragging with viewport clamp
         if (dragging != null) {
-            dragging.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+            Vector3 targetWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+            // preserve original z
+            targetWorld.z = dragging.position.z;
+
+            // convert to viewport and clamp with padding
+            Vector3 vp = Camera.main.WorldToViewportPoint(targetWorld);
+            vp.x = Mathf.Clamp(vp.x, viewportPadding, 1f - viewportPadding);
+            vp.y = Mathf.Clamp(vp.y, viewportPadding, 1f - viewportPadding);
+
+            Vector3 clampedWorld = Camera.main.ViewportToWorldPoint(vp);
+            clampedWorld.z = dragging.position.z;
+
+            dragging.position = clampedWorld;
         }
     }
 }
