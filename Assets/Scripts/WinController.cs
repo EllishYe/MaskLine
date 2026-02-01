@@ -155,11 +155,23 @@ public class WinController : MonoBehaviour
     public void ResetState()
     {
         hasWon = false;
-        if (targets == null) return;
-        foreach (var t in targets)
+        if (targets != null)
         {
-            if (t == null) continue;
-            t.ResetSlot();
+            foreach (var t in targets)
+            {
+                if (t == null) continue;
+                t.ResetSlot();
+            }
+        }
+
+        // 停止并重置所有 LineController（避免残留动画）
+        if (lineControllers != null)
+        {
+            foreach (var lc in lineControllers)
+            {
+                if (lc == null) continue;
+                lc.ResetAnimation();
+            }
         }
     }
 }
