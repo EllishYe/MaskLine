@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelParent: {fileID: 2084649120}
-  LevelButtonPrefab: {fileID: 6397473660451494150, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
+  LevelButtonPrefab: {fileID: 6397473660451494150, guid: 6eaef9f1c01786a478896a0e1fdc755b, type: 3}
   AreaHeaderText: {fileID: 1009578870}
   LevelHeaderText: {fileID: 1117313339}
   CurrentArea: {fileID: 11400000, guid: d969674b57cc1514a89fac13713ac3b3, type: 2}
@@ -1083,7 +1083,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 700, y: 100}
+  m_SizeDelta: {x: 1500, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2084649121
 MonoBehaviour:
@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 256, y: 256}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -1280,11 +1280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2112240343613822855, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2112240343613822855, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2112240343613822855, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1334,6 +1334,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5899863084214421091, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2641698482785147981, guid: ddb1aaf36387a3d4c9694f26b5a1efa7, type: 3}
     - target: {fileID: 6397473660451494150, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
       propertyPath: m_Name
       value: LevelButton
@@ -1342,10 +1346,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7258359692726386451, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258359692726386451, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
     - target: {fileID: 7659007602658506849, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
       propertyPath: _levelNameText
       value: 
       objectReference: {fileID: 888579432}
+    - target: {fileID: 7819856167509746369, guid: bb472add98c85d94bbdfde8047e671d6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
