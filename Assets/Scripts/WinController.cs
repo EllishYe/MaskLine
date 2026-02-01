@@ -68,4 +68,18 @@ public class WinController : MonoBehaviour
         Debug.Log("WIN!");
         // Animation,Sound,UI,etc.
     }
+
+    /// <summary>
+    /// 在 Restart 场景时调用：重置 hasWon 并清除所有 target 的占位/状态
+    /// </summary>
+    public void ResetState()
+    {
+        hasWon = false;
+        if (targets == null) return;
+        foreach (var t in targets)
+        {
+            if (t == null) continue;
+            t.ResetSlot();
+        }
+    }
 }

@@ -102,6 +102,15 @@ public class TargetSlot : MonoBehaviour
     }
 
     /// <summary>
+    /// 重置此 target 的占位与满足状态（Restart 时调用）
+    /// </summary>
+    public void ResetSlot()
+    {
+        occupyingMask = null;
+        IsSatisfied = false;
+    }
+
+    /// <summary>
     /// Scene 视图可视化判定范围
     /// </summary>
     private void OnDrawGizmosSelected()
