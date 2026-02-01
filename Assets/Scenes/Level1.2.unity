@@ -1603,7 +1603,7 @@ GameObject:
   - component: {fileID: 1467875127}
   - component: {fileID: 1467875126}
   - component: {fileID: 1467875125}
-  - component: {fileID: 1467875124}
+  - component: {fileID: 1467875128}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1631,21 +1631,6 @@ RectTransform:
   m_AnchoredPosition: {x: -101.36, y: 32.490005}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1467875124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467875122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f272647f9f059e4b967f25afc48fa32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene:
-    m_SceneAsset: {fileID: 102900000, guid: cc3e3cb70fbf8844f8b64ff238ce7fe9, type: 3}
-    m_SceneName: Level0.2Select
 --- !u!114 &1467875125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,9 +1675,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1467875124}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 1467875128}
+        m_TargetAssemblyTypeName: LevelRestart, Assembly-CSharp
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1740,6 +1725,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467875122}
   m_CullTransparentMesh: 1
+--- !u!114 &1467875128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467875122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa14b75584d7f1c4bb3e03cb1ffdfff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winController: {fileID: 1366304569}
 --- !u!1 &1767890441
 GameObject:
   m_ObjectHideFlags: 0
