@@ -6,6 +6,10 @@ public class WinController : MonoBehaviour
 
     private bool hasWon = false;
 
+    // 可在 Inspector 中填写（胜利后解锁的下一个 LevelID）
+    [Tooltip("在当前关卡胜利后要解锁的 LevelID（可留空）")]
+    public string unlockLevelID;
+
     // 供DragAll在拖拽结束时调用
     public void EvaluateMaskOnTargets(MaskID mask)
     {
@@ -66,11 +70,16 @@ public class WinController : MonoBehaviour
     private void OnWin()
     {
         Debug.Log("WIN!");
+        // 解锁下一个关卡（如果设置了）
+        if (!string.IsNullOrWhiteSpace(unlockLevelID) && LevelProgress.Instance != null)
+        {
+            LevelProgress.Instance.UnlockLevel(unlockLevelID);
+        }
         // Animation,Sound,UI,etc.
     }
 
     /// <summary>
-    /// 在 Restart 场景时调用：重置 hasWon 并清除所有 target 的占位/状态
+    /// 在 Restart 场景时调用：重置 hasWon 并清除所有 target 的占位/状态 
     /// </summary>
     public void ResetState()
     {
