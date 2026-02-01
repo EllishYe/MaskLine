@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinController : MonoBehaviour
 {
@@ -6,9 +7,14 @@ public class WinController : MonoBehaviour
 
     private bool hasWon = false;
 
-    // 可在 Inspector 中填写（胜利后解锁的下一个 LevelID）
     [Tooltip("在当前关卡胜利后要解锁的 LevelID（可留空）")]
     public string unlockLevelID;
+
+    [Tooltip("胜利时播放的音效（可留空）")]
+    public AudioClip winClip;
+
+    [Tooltip("胜利后要跳转到的场景（可拖入 Scene Asset）")]
+    public SceneField returnScene;
 
     // 供DragAll在拖拽结束时调用
     public void EvaluateMaskOnTargets(MaskID mask)
@@ -19,7 +25,6 @@ public class WinController : MonoBehaviour
             return;
         }
 
-        // 仅调用各 target 的检查，不做冗余日志输出（TargetSlot 内保留必要日志）
         if (targets != null)
         {
             foreach (var target in targets)
@@ -70,12 +75,32 @@ public class WinController : MonoBehaviour
     private void OnWin()
     {
         Debug.Log("WIN!");
-        // 解锁下一个关卡（如果设置了）
+
+        // 先解锁下一个关卡（立即持久化）
         if (!string.IsNullOrWhiteSpace(unlockLevelID) && LevelProgress.Instance != null)
         {
             LevelProgress.Instance.UnlockLevel(unlockLevelID);
         }
-        // Animation,Sound,UI,etc.
+
+        // 再播放胜利音，播放完毕后跳转
+        string sceneName = returnScene != null ? returnScene.SceneName : null;
+
+        if (winClip != null && AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(winClip, () =>
+            {
+                if (!string.IsNullOrWhiteSpace(sceneName))
+                    SceneManager.LoadScene(sceneName);
+            });
+        }
+        else
+        {
+            // 若没配置音或AudioManager不存在则直接跳转
+            if (!string.IsNullOrWhiteSpace(sceneName))
+                SceneManager.LoadScene(sceneName);
+        }
+
+        // 你也可以在这里播放胜利 UI/特效
     }
 
     /// <summary>
