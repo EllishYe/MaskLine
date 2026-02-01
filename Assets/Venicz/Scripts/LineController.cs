@@ -20,6 +20,10 @@ public class LineController : MonoBehaviour
     public SpriteMask endPointMask;
     bool endPointSpawned;
     bool win;
+    [Header("LineLevel")]
+    public bool main;
+    public LineController extraLine;
+    public Transform secondLineStartPoint;
 
     public float startPointOffset;
    
@@ -42,7 +46,7 @@ public class LineController : MonoBehaviour
 
     private void Start()
     {
-        VictoryAnim();
+        if(main)VictoryAnim();//if is main linerenderer, use this to start animation
     }
 
     public void VictoryAnim()//在winController中调用
@@ -108,6 +112,17 @@ public class LineController : MonoBehaviour
             }
 
             line.SetPosition(pointIndex, targetPos);
+            //check latest pointPos is the secondLineStartPoint or not, if true, start extraLinerender.
+            if (main&& secondLineStartPoint!=null)
+            {
+                if (line.GetPosition(pointIndex) == secondLineStartPoint.position)
+                {
+                    if (extraLine != null)
+                    {
+                        extraLine.VictoryAnim();
+                    }
+                }
+            }
             currentIndex++;
         }
         //lineSpawnEnd = true;
