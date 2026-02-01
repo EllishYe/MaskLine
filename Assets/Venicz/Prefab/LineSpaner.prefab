@@ -359,11 +359,12 @@ MonoBehaviour:
   - {fileID: 6739974204468890679}
   pointNums: 0
   targetPos: []
-  moveSpeed: 1
+  moveSpeed: 3
   startPrefab: {fileID: 7132176328867938727, guid: 94f1e370014b83342a9eec56f4bba134, type: 3}
   startPointMask: {fileID: 5370138171959278153}
   endPrefab: {fileID: 4092614180864557460, guid: f3c750c25df8b874587bc5e4c9cac781, type: 3}
   endPointMask: {fileID: 6809063823673324021}
+  startPointOffset: 0.45
 --- !u!120 &6741482527815457211
 LineRenderer:
   serializedVersion: 2

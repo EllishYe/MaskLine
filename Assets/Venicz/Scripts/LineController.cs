@@ -10,8 +10,8 @@ public class LineController : MonoBehaviour
     public Transform[] targetPos;
     public float moveSpeed = 5f;
     int currentIndex = 0;
-    bool lineSpawnStart = false;
-    bool lineSpawnEnd = false;
+    //bool lineSpawnStart = false;
+    //bool lineSpawnEnd = false;
     [Header("StartPoint&EndPoint")]
     public GameObject startPrefab;
     public SpriteMask startPointMask;
@@ -20,13 +20,13 @@ public class LineController : MonoBehaviour
     public SpriteMask endPointMask;
     bool endPointSpawned;
     bool win;
-    [Header("OtherSettings")]
-    WinController_V winController;
+
+    public float startPointOffset;
+   
 
     private void Awake()
     {
         line = GetComponent<LineRenderer>();
-        winController = GetComponent<WinController_V>();
     }
 
     // Update is called once per frame
@@ -72,26 +72,42 @@ public class LineController : MonoBehaviour
     }
     IEnumerator DrawLineStepByStep()
     {
-        
+        //已知问题：lineRenderer在两个点特别靠近时，会让对应线段的粗细受到波动。   
         //在在起始位置生成一个点，往下一个lineSlot移动，当到达位置后，在新的位置生成一个新的点，直到达到终点。
         while (currentIndex < lineSlot.Length)
         {
             Vector3 startPos = lineSlot[currentIndex - 1].position;//上一点的位置
             Vector3 targetPos = lineSlot[currentIndex].position;//目标位置
+
+            //计算startPos和targetPos的方向，在对应方向的x或y轴上加startPointOffset作为起始点
+            var dir = targetPos - startPos;
+            Vector3 newStartPos = startPos;
+            if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+            {
+                // X 方向移动
+                if(dir.x < 0) newStartPos.x -= startPointOffset;
+                else newStartPos.x += startPointOffset;
+            }
+            else
+            {
+                //Y 方向移动
+                if (dir.y < 0) newStartPos.y -= startPointOffset;
+                else newStartPos.y += startPointOffset;
+            }
+
             line.positionCount++;
-            line.SetPosition(line.positionCount-1, startPos);
+            line.SetPosition(line.positionCount-1, newStartPos);
             int pointIndex = line.positionCount - 1;
             float t = 0f;
             while (t <= 1f)
             {
                 t += Time.deltaTime * moveSpeed;
-                line.SetPosition(pointIndex,Vector3.Lerp(startPos, targetPos, t));
+                line.SetPosition(pointIndex,Vector3.Lerp(newStartPos, targetPos, t));
                 //line.SetPosition(pointIndex, Vector3.SmoothDamp(startPos, targetPos,ref moveVel, 1f));
                 yield return null;
             }
 
             line.SetPosition(pointIndex, targetPos);
-
             currentIndex++;
         }
         //lineSpawnEnd = true;
