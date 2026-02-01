@@ -9,31 +9,52 @@ public class WinController : MonoBehaviour
     // 供DragAll在拖拽结束时调用
     public void EvaluateMaskOnTargets(MaskID mask)
     {
-        if (mask == null) {
+        if (mask == null)
+        {
+            Debug.LogWarning("[WinController] EvaluateMaskOnTargets called with null mask");
             return;
         }
 
-        foreach (var target in targets)
+        // 仅调用各 target 的检查，不做冗余日志输出（TargetSlot 内保留必要日志）
+        if (targets != null)
         {
-            if (target == null)
+            foreach (var target in targets)
             {
-                continue;
+                if (target == null) continue;
+                target.CheckMask(mask);
             }
-            target.CheckMask(mask);
         }
 
         CheckWinCondition();
+    }
+
+    /// <summary>
+    /// 遍历所有 target，若某个 target 的 occupyingMask 恰好是传入的 mask，则让该 target 清除占位。
+    /// 在拾起 mask（开始拖拽）时调用。
+    /// </summary>
+    public void ClearOccupancyForMask(MaskID mask)
+    {
+        if (mask == null) return;
+        if (targets == null) return;
+
+        foreach (var target in targets)
+        {
+            if (target == null) continue;
+            target.ClearOccupyingIfMatches(mask);
+        }
     }
 
     public void CheckWinCondition()
     {
         if (hasWon) return;
 
+        if (targets == null) return;
+
         foreach (var target in targets)
         {
             if (target == null || !target.IsSatisfied)
             {
-                Debug.Log("[WinController] Not all targets satisfied yet.");
+                // 不再输出每次未完成的冗余日志，保留沉默检查
                 return;
             }
         }

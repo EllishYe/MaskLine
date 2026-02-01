@@ -20,6 +20,13 @@ public class DragAll : MonoBehaviour
             {
                 dragging = hit.transform;
                 offset = dragging.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                // 若开始拖拽的是一个 Mask，立即清除它在任何 target 上的占位
+                var maskStart = dragging.GetComponent<MaskID>();
+                if (maskStart != null && winController != null)
+                {
+                    winController.ClearOccupancyForMask(maskStart);
+                }
             }
         }
         // Stop Dragging and Evaluate win condition
@@ -29,16 +36,53 @@ public class DragAll : MonoBehaviour
                 var mask = dragging.GetComponent<MaskID>();
                 if (mask != null)
                 {
-                    winController.EvaluateMaskOnTargets(mask);
+                    // basic safety checks
+                    if (winController == null)
+                    {
+                        Debug.LogWarning("[DragAll] winController is not assigned!");
+                    }
+                    else if (winController.targets == null)
+                    {
+                        Debug.LogWarning("[DragAll] winController.targets is null!");
+                    }
+
+                    // 吸附：在所有目标中找与 mask ID 匹配且在 acceptRadius 内的最近目标
+                    TargetSlot bestTarget = null;
+                    float bestDist = float.MaxValue;
+                    if (winController != null && winController.targets != null)
+                    {
+                        foreach (var target in winController.targets)
+                        {
+                            if (target == null) continue;
+                            if (target.requiredMaskID != mask.tileID) continue;
+
+                            float dist = Vector2.Distance(mask.transform.position, target.transform.position);
+                            if (dist <= target.acceptRadius && dist < bestDist)
+                            {
+                                bestDist = dist;
+                                bestTarget = target;
+                            }
+                        }
+                    }
+
+                    if (bestTarget != null)
+                    {
+                        bestTarget.TrySnap(mask, true);
+                    }
+                    else
+                    {
+                        Debug.Log($"[DragAll] No snap target found for '{dragging.name}' (id='{mask.tileID}')");
+                    }
+
+                    // 评估（吸附后再评估）
+                    if (winController != null)
+                        winController.EvaluateMaskOnTargets(mask);
                 }
                 else
                 {
-                    winController.CheckWinCondition();
+                    if (winController != null)
+                        winController.CheckWinCondition();
                 }
-            }
-            else
-            {
-                Debug.Log("[DragAll] MouseUp but no dragging object");
             }
 
             dragging = null;

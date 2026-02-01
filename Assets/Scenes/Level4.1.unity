@@ -1519,9 +1519,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 654330628169485091, guid: dc13f405e71580b4ca3cc5616754ba63, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 654330628169485091, guid: dc13f405e71580b4ca3cc5616754ba63, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6738944698475704500, guid: 1c98163a6b71f084588c14cabfdf5dd9, type: 3}
+      objectReference: {fileID: -6738944698475704500, guid: b0e4bcf100693d347be86d3689402044, type: 3}
+    - target: {fileID: 654330628169485091, guid: dc13f405e71580b4ca3cc5616754ba63, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2919692149409115785, guid: dc13f405e71580b4ca3cc5616754ba63, type: 3}
       propertyPath: m_Size.x
       value: 3
@@ -1543,9 +1551,17 @@ PrefabInstance:
       value: C
       objectReference: {fileID: 0}
     - target: {fileID: 7187043070387578311, guid: dc13f405e71580b4ca3cc5616754ba63, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187043070387578311, guid: dc13f405e71580b4ca3cc5616754ba63, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -332080565721766952, guid: 96a00e7efa8099742ac257d0473fc307, type: 3}
+      objectReference: {fileID: -332080565721766952, guid: fbe7153428bfa2f4db96c97ce6e29777, type: 3}
+    - target: {fileID: 7187043070387578311, guid: dc13f405e71580b4ca3cc5616754ba63, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7374788964599962926, guid: dc13f405e71580b4ca3cc5616754ba63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.87

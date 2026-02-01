@@ -21,51 +21,88 @@ public class TargetSlot : MonoBehaviour
     /// </summary>
     public void CheckMask(MaskID mask)
     {
-        // if null mask is passed, do nothing
         if (mask == null)
         {
-            Debug.Log($"[TargetSlot] {name}: CheckMask called with null -> keep IsSatisfied={IsSatisfied}");
             return;
         }
 
-        // if ID is not matched, early return
+        // 如果 tileID 不匹配
         if (mask.tileID != requiredMaskID)
         {
-            // 只有当正在评估的 mask 恰好是当前占位的 mask 时，才清除（说明占位的 mask 被移开或放错地方）
+            // 只有当当前占位恰好是这个 mask 时，才清除（表示该 mask 被移开或放错）
             if (occupyingMask == mask)
             {
                 IsSatisfied = false;
                 occupyingMask = null;
+                Debug.Log($"[TargetSlot] {name}: occupancy cleared for '{mask.gameObject.name}'");
             }
             return;
         }
 
-        // ID is matched, check distance
+        // ID is matching,check distance
         float distance = Vector2.Distance(mask.transform.position, transform.position);
-        Debug.Log($"[TargetSlot] {name}: CheckMask -> matched ID='{mask.tileID}'. distance={distance:F3}, acceptRadius={acceptRadius:F3} (mask object: {mask.gameObject.name})");
-
         bool satisfied = distance <= acceptRadius;
 
         if (satisfied)
         {
             IsSatisfied = true;
             occupyingMask = mask;
-            Debug.Log($"[TargetSlot] {name}: CheckMask -> alignment SUCCESS. IsSatisfied={IsSatisfied}");
+            Debug.Log($"[TargetSlot] {name}: alignment SUCCESS with '{mask.gameObject.name}'");
         }
         else
         {
-            // 如果当前占位的是这个 mask，但现在不在范围内，则清除；否则不改变
+            // 如果当前占位的是这个 mask，但现在不在范围内，则清除
             if (occupyingMask == mask)
             {
                 IsSatisfied = false;
                 occupyingMask = null;
+                Debug.Log($"[TargetSlot] {name}: occupying '{mask.gameObject.name}' moved out of range, cleared");
             }
         }
     }
 
     /// <summary>
-    /// 仅用于 Scene 视图中的调试显示
-    /// 可视化当前 Target 的判定范围
+    /// 如果当前占位正是传入的 mask，则清除占位与状态。
+    /// 拾取（OnMouseDown）时应调用此函数以立即释放占位。
+    /// </summary>
+    public void ClearOccupyingIfMatches(MaskID mask)
+    {
+        if (mask == null) return;
+        if (occupyingMask == mask)
+        {
+            occupyingMask = null;
+            IsSatisfied = false;
+            Debug.Log($"[TargetSlot] {name}: ClearOccupyingIfMatches -> cleared occupancy for '{mask.gameObject.name}'");
+        }
+    }
+
+    /// <summary>
+    /// 尝试让这个 target 接受并（可选）吸附传入的 mask。
+    /// 返回 true 表示接受并设置占位（并在 snap=true 时把 mask 的 transform 设为 target 位置）。
+    /// </summary>
+    public bool TrySnap(MaskID mask, bool snapTransform = true)
+    {
+        if (mask == null) return false;
+        if (mask.tileID != requiredMaskID) return false;
+
+        float distance = Vector2.Distance(mask.transform.position, transform.position);
+        if (distance <= acceptRadius)
+        {
+            occupyingMask = mask;
+            IsSatisfied = true;
+            if (snapTransform)
+            {
+                mask.transform.position = transform.position;
+            }
+            Debug.Log($"[TargetSlot] {name}: TrySnap -> snapped '{mask.gameObject.name}'");
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Scene 视图可视化判定范围
     /// </summary>
     private void OnDrawGizmosSelected()
     {
