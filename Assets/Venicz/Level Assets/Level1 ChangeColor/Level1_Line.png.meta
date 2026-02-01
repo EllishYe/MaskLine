@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: d41354fe642a41c4f9e9f499d08702bd
+guid: e6985afc58255a148bb6702e4ead6e8f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5441982014129827044
-    second: Level 2_Line_0
+      213: 3497398288484899098
+    second: Level1_Line_0
   - first:
-      213: 7587505434337905094
-    second: Level 2_Line_1
+      213: 2681870731861412496
+    second: Level1_Line_1
   - first:
-      213: 3077419759240884950
-    second: Level 2_Line_2
+      213: 6925713684114936041
+    second: Level1_Line_2
   - first:
-      213: -7198386287386258549
-    second: Level 2_Line_3
-  - first:
-      213: -7527023276858314721
-    second: Level 2_Line_4
-  - first:
-      213: -7893932437628792865
-    second: Level 2_Line_5
+      213: 4412677997064599538
+    second: Level1_Line_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -61,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -128,34 +122,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level 2_Line_0
+      name: Level1_Line_0
       rect:
         serializedVersion: 2
         x: 99
-        y: 519
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ece54a1fcdc58b40800000000000000
-      internalID: 5441982014129827044
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level 2_Line_1
-      rect:
-        serializedVersion: 2
-        x: 599
         y: 579
-        width: 202
+        width: 362
         height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -165,19 +137,63 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c98e010efb3c4960800000000000000
-      internalID: 7587505434337905094
+      spriteID: a19933f9631498030800000000000000
+      internalID: 3497398288484899098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Level 2_Line_2
+      name: Level1_Line_1
       rect:
         serializedVersion: 2
-        x: 1099
+        x: 1299
         y: 579
-        width: 302
+        width: 362
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09acd12b83be73520800000000000000
+      internalID: 2681870731861412496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level1_Line_2
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 379
+        width: 362
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e09bb5d6e31d1060800000000000000
+      internalID: 6925713684114936041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level1_Line_3
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 179
+        width: 202
         height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,74 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6d2325657f035ba20800000000000000
-      internalID: 3077419759240884950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level 2_Line_3
-      rect:
-        serializedVersion: 2
-        x: 1339
-        y: 419
-        width: 262
-        height: 362
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b839c407fc13a1c90800000000000000
-      internalID: -7198386287386258549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level 2_Line_4
-      rect:
-        serializedVersion: 2
-        x: 239
-        y: 319
-        width: 322
-        height: 162
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f1073c6a534aa8790800000000000000
-      internalID: -7527023276858314721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level 2_Line_5
-      rect:
-        serializedVersion: 2
-        x: 1399
-        y: 279
-        width: 202
-        height: 102
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fdfc336954e137290800000000000000
-      internalID: -7893932437628792865
+      spriteID: 2f7b73b424bfc3d30800000000000000
+      internalID: 4412677997064599538
       vertices: []
       indices: 
       edges: []
@@ -263,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Level 2_Line_0: 5441982014129827044
-      Level 2_Line_1: 7587505434337905094
-      Level 2_Line_2: 3077419759240884950
-      Level 2_Line_3: -7198386287386258549
-      Level 2_Line_4: -7527023276858314721
-      Level 2_Line_5: -7893932437628792865
+      Level1_Line_0: 3497398288484899098
+      Level1_Line_1: 2681870731861412496
+      Level1_Line_2: 6925713684114936041
+      Level1_Line_3: 4412677997064599538
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

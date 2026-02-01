@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: d41354fe642a41c4f9e9f499d08702bd
+guid: fdd6695d1ff5d2443bd53740dd4aa448
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5441982014129827044
-    second: Level 2_Line_0
+      213: -2365397787918848643
+    second: level5_Line_0
   - first:
-      213: 7587505434337905094
-    second: Level 2_Line_1
+      213: -3246558695188004901
+    second: level5_Line_1
   - first:
-      213: 3077419759240884950
-    second: Level 2_Line_2
+      213: -7775776609845108410
+    second: level5_Line_2
   - first:
-      213: -7198386287386258549
-    second: Level 2_Line_3
+      213: 4180606092386002630
+    second: level5_Line_3
   - first:
-      213: -7527023276858314721
-    second: Level 2_Line_4
+      213: -7419054246900620954
+    second: level5_Line_4
   - first:
-      213: -7893932437628792865
-    second: Level 2_Line_5
+      213: -1069932000451771905
+    second: level5_Line_5
+  - first:
+      213: 7935420152827089082
+    second: level5_Line_6
+  - first:
+      213: -4434346464211831663
+    second: level5_Line_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -61,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -128,55 +134,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level 2_Line_0
+      name: level5_Line_0
       rect:
         serializedVersion: 2
         x: 99
-        y: 519
-        width: 362
-        height: 362
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ece54a1fcdc58b40800000000000000
-      internalID: 5441982014129827044
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level 2_Line_1
-      rect:
-        serializedVersion: 2
-        x: 599
-        y: 579
-        width: 202
-        height: 102
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6c98e010efb3c4960800000000000000
-      internalID: 7587505434337905094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level 2_Line_2
-      rect:
-        serializedVersion: 2
-        x: 1099
-        y: 579
+        y: 619
         width: 302
         height: 262
       alignment: 0
@@ -187,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6d2325657f035ba20800000000000000
-      internalID: 3077419759240884950
+      spriteID: d7d2a9a8e3b6c2fd0800000000000000
+      internalID: -2365397787918848643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Level 2_Line_3
+      name: level5_Line_1
       rect:
         serializedVersion: 2
-        x: 1339
-        y: 419
-        width: 262
-        height: 362
+        x: 299
+        y: 719
+        width: 102
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,19 +171,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b839c407fc13a1c90800000000000000
-      internalID: -7198386287386258549
+      spriteID: bdffcd65118e1f2d0800000000000000
+      internalID: -3246558695188004901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Level 2_Line_4
+      name: level5_Line_2
       rect:
         serializedVersion: 2
-        x: 239
-        y: 319
-        width: 322
+        x: 999
+        y: 619
+        width: 202
         height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -231,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f1073c6a534aa8790800000000000000
-      internalID: -7527023276858314721
+      spriteID: 64124650f54e61490800000000000000
+      internalID: -7775776609845108410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Level 2_Line_5
+      name: level5_Line_3
       rect:
         serializedVersion: 2
-        x: 1399
-        y: 279
-        width: 202
-        height: 102
+        x: 1239
+        y: 679
+        width: 562
+        height: 302
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,8 +215,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fdfc336954e137290800000000000000
-      internalID: -7893932437628792865
+      spriteID: 6c6608a571f740a30800000000000000
+      internalID: 4180606092386002630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level5_Line_4
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 519
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 661a22468793a0990800000000000000
+      internalID: -7419054246900620954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level5_Line_5
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 179
+        width: 202
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff1cf3ba386d621f0800000000000000
+      internalID: -1069932000451771905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level5_Line_6
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 179
+        width: 102
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab01cb8d596402e60800000000000000
+      internalID: 7935420152827089082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level5_Line_7
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 219
+        width: 522
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 194f4ad82690672c0800000000000000
+      internalID: -4434346464211831663
       vertices: []
       indices: 
       edges: []
@@ -263,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Level 2_Line_0: 5441982014129827044
-      Level 2_Line_1: 7587505434337905094
-      Level 2_Line_2: 3077419759240884950
-      Level 2_Line_3: -7198386287386258549
-      Level 2_Line_4: -7527023276858314721
-      Level 2_Line_5: -7893932437628792865
+      level5_Line_0: -2365397787918848643
+      level5_Line_1: -3246558695188004901
+      level5_Line_2: -7775776609845108410
+      level5_Line_3: 4180606092386002630
+      level5_Line_4: -7419054246900620954
+      level5_Line_5: -1069932000451771905
+      level5_Line_6: 7935420152827089082
+      level5_Line_7: -4434346464211831663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
