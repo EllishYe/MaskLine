@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,9 @@ public class WinController : MonoBehaviour
 
     [Tooltip("胜利后要跳转到的场景（可拖入 Scene Asset）")]
     public SceneField returnScene;
+
+    [Tooltip("胜利时需要播放的若干 LineController（可在 Inspector 中列出多个）")]
+    public LineController[] lineControllers;
 
     // 供DragAll在拖拽结束时调用
     public void EvaluateMaskOnTargets(MaskID mask)
@@ -69,10 +73,10 @@ public class WinController : MonoBehaviour
         }
 
         hasWon = true;
-        OnWin();
+        StartCoroutine(HandleWinSequence());
     }
 
-    private void OnWin()
+    private IEnumerator HandleWinSequence()
     {
         Debug.Log("WIN!");
 
@@ -82,25 +86,67 @@ public class WinController : MonoBehaviour
             LevelProgress.Instance.UnlockLevel(unlockLevelID);
         }
 
-        // 再播放胜利音，播放完毕后跳转
         string sceneName = returnScene != null ? returnScene.SceneName : null;
 
-        if (winClip != null && AudioManager.Instance != null)
+        // 1) 并行触发所有 LineController 的动画并等待它们全部完成
+        if (lineControllers != null && lineControllers.Length > 0)
         {
-            AudioManager.Instance.PlaySFX(winClip, () =>
+            int n = lineControllers.Length;
+            bool[] finished = new bool[n];
+
+            for (int i = 0; i < n; i++)
             {
-                if (!string.IsNullOrWhiteSpace(sceneName))
-                    SceneManager.LoadScene(sceneName);
-            });
-        }
-        else
-        {
-            // 若没配置音或AudioManager不存在则直接跳转
-            if (!string.IsNullOrWhiteSpace(sceneName))
-                SceneManager.LoadScene(sceneName);
+                var lc = lineControllers[i];
+                if (lc == null)
+                {
+                    finished[i] = true;
+                    continue;
+                }
+                StartCoroutine(RunLineControllerAndFlag(lc, i, finished));
+            }
+
+            // 等待所有 finished 都为 true
+            bool allDone = false;
+            while (!allDone)
+            {
+                allDone = true;
+                for (int i = 0; i < n; i++)
+                {
+                    if (!finished[i])
+                    {
+                        allDone = false;
+                        break;
+                    }
+                }
+                if (!allDone) yield return null;
+            }
         }
 
-        // 你也可以在这里播放胜利 UI/特效
+        // 2) 播放胜利音并等待其播放结束
+        if (winClip != null && AudioManager.Instance != null && AudioManager.Instance.sfxSource != null)
+        {
+            AudioManager.Instance.PlaySFX(winClip);
+            yield return new WaitForSecondsRealtime(Mathf.Max(0.01f, winClip.length));
+        }
+
+        // 3) 跳转场景（如果配置了）
+        if (!string.IsNullOrWhiteSpace(sceneName))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+    }
+
+    private IEnumerator RunLineControllerAndFlag(LineController lc, int index, bool[] finished)
+    {
+        if (lc == null)
+        {
+            finished[index] = true;
+            yield break;
+        }
+
+        // 启动并等待该 LineController 的协程完成
+        yield return StartCoroutine(lc.PlayVictoryCoroutine());
+        finished[index] = true;
     }
 
     /// <summary>

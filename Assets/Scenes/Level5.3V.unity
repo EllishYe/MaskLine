@@ -2037,6 +2037,12 @@ MonoBehaviour:
   - {fileID: 2003504189}
   - {fileID: 1678047351}
   - {fileID: 515069843}
+  unlockLevelID: 
+  winClip: {fileID: 0}
+  returnScene:
+    m_SceneAsset: {fileID: 0}
+    m_SceneName: 
+  lineController: {fileID: 0}
 --- !u!1 &1408201059
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,6 +2767,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   winController: {fileID: 1366304569}
+  viewportPadding: 0.05
 --- !u!1001 &2095438741
 PrefabInstance:
   m_ObjectHideFlags: 0
