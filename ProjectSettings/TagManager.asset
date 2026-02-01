@@ -50,5 +50,9 @@ TagManager:
   - name: FixedLine
     uniqueID: 2328812261
     locked: 0
+  - name: Emission
+    uniqueID: 2597388083
+    locked: 0
   m_RenderingLayers:
   - Default
+  - Emission

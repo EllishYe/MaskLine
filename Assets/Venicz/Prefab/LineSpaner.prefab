@@ -83,7 +83,7 @@ SpriteMask:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 4294967295
+  m_RenderingLayerMask: 2
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
@@ -109,13 +109,13 @@ SpriteMask:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e027aee44b887624bbc626c31b44febb, type: 3}
   m_MaskAlphaCutoff: 0.533
-  m_FrontSortingLayerID: 0
-  m_BackSortingLayerID: 0
-  m_FrontSortingLayer: 0
-  m_BackSortingLayer: 0
+  m_FrontSortingLayerID: -1697579213
+  m_BackSortingLayerID: -1697579213
+  m_FrontSortingLayer: 4
+  m_BackSortingLayer: 4
   m_FrontSortingOrder: 10
   m_BackSortingOrder: 0
-  m_IsCustomRangeActive: 0
+  m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
   m_MaskSource: 0
 --- !u!1 &1095091568264127225
@@ -267,7 +267,7 @@ SpriteMask:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 4294967295
+  m_RenderingLayerMask: 2
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
@@ -408,7 +408,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
@@ -526,12 +526,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424644172643779093, guid: f3c750c25df8b874587bc5e4c9cac781, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424644172643779093, guid: f3c750c25df8b874587bc5e4c9cac781, type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8424644172643779093, guid: f3c750c25df8b874587bc5e4c9cac781, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1697579213
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424644172643779093, guid: f3c750c25df8b874587bc5e4c9cac781, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424644172643779093, guid: f3c750c25df8b874587bc5e4c9cac781, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -557,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 422214162467207726, guid: 94f1e370014b83342a9eec56f4bba134, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 422214162467207726, guid: 94f1e370014b83342a9eec56f4bba134, type: 3}
       propertyPath: m_SortingOrder
@@ -565,7 +577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 422214162467207726, guid: 94f1e370014b83342a9eec56f4bba134, type: 3}
       propertyPath: m_SortingLayerID
-      value: 0
+      value: -1697579213
       objectReference: {fileID: 0}
     - target: {fileID: 422214162467207726, guid: 94f1e370014b83342a9eec56f4bba134, type: 3}
       propertyPath: m_MaskInteraction
@@ -574,6 +586,10 @@ PrefabInstance:
     - target: {fileID: 422214162467207726, guid: 94f1e370014b83342a9eec56f4bba134, type: 3}
       propertyPath: m_SpriteSortPoint
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422214162467207726, guid: 94f1e370014b83342a9eec56f4bba134, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5923773250192831828, guid: 94f1e370014b83342a9eec56f4bba134, type: 3}
       propertyPath: m_LocalScale.y
